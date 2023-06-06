@@ -6,6 +6,11 @@ import pcf8574_io
 import os
 
 
+<<<<<<< HEAD
+=======
+if os.path.exists('/home/pi/Desktop/stop_coin.txt'):
+    exit()
+>>>>>>> 16dcc64676f9dc150e8c0362e576618ac6190b33
 # You can use up to 8 PCF8574 boards
 # the board will start in input mode
 # the pins are HIGH in input mode
