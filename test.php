@@ -7,7 +7,7 @@
     <h1>Send Data to Flask Server</h1>
     <form method="post" action="">
         <input type="hidden" name="message" value="coin">
-        <input type="hidden" name="message2" value="servo">
+        <input type="hidden" name="message2" value="servo1">
         <input type="hidden" name="message3" value="close">
         <button type="submit" name="coin">coin</button>
         <button type="submit" name="close">close</button>

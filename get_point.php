@@ -11,7 +11,6 @@ $query = mysqli_query($db, "SELECT * FROM product WHERE p_id = $id");
 $result = mysqli_fetch_array($query);
 $query = mysqli_query($db, "SELECT * FROM vm_info WHERE vm_id = '$bu'");
 $vm_name = mysqli_fetch_array($query);
-<<<<<<< HEAD
 if($id == 1){
 $data = array(
     'message' => 'servo1'
@@ -19,11 +18,6 @@ $data = array(
 $data = array(
    'message' => 'servo2'
 );}
-=======
-$data = array(
-    'message' => 'servo'
-);
->>>>>>> 16dcc64676f9dc150e8c0362e576618ac6190b33
 
 // URL of the Flask server
 $url = 'http://localhost:5000/receive';

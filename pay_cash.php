@@ -17,11 +17,7 @@
  fwrite($myfile ,$msg."\n");
  fclose($myfile); 
  $myfile = fopen("text.txt", "w");
-<<<<<<< HEAD
  $msg = 0;
-=======
- $msg = 1;
->>>>>>> 16dcc64676f9dc150e8c0362e576618ac6190b33
  fwrite($myfile ,$msg."\n");
  fclose($myfile); 
 ?>
