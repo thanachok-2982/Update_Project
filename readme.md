@@ -1,4 +1,4 @@
-08/06/2023
+06/06/2023
 
 Can open coin validator module via pay.php page, 
 and close its in get_point.php page!.
