@@ -12,3 +12,10 @@ fix sensor e18
  
 its work!
 
+16/06/2023
+
+add sensor ir for checking product
+
+wait for fix in website
+
+

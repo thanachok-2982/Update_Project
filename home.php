@@ -4,7 +4,11 @@
  $u_id = isset($_GET['u_id']);
  $query = mysqli_query($db,"SELECT * FROM vm_info WHERE vm_id = '$bu'");
  $vm_name = mysqli_fetch_array($query);
-$product = 0;
+ $product = 0;
+ $sensor1 = exec("python /var/www/html/sensor1.py");
+ echo $sensor1;
+ $sensor2 = exec("python /var/www/html/sensor2.py");
+ echo $sensor2;
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -113,7 +117,7 @@ $product = 0;
          }else if ($product == 3){
           $p = $vm['product3'];
          }
-         if($p !='0'){
+         if($sensor1 == '0'){
         ?>
         <div class="product-item" >
             <?php if($u_id == ''){
@@ -128,7 +132,33 @@ $product = 0;
             </a>
         </div>
 
-        <?php }else if($p == '0'){ ?>
+	<?php }else if($sensor1 == '1' && $product == '1' ){ ?>
+          <div class="product-item" >
+            <a class="product-item-link">
+              <img class="product-img" src="<?=$result['img']?>" >
+              <p class="product-font1"><?=$result['name']?></p>
+              <p class="product-font2">สินค้าหมด</p>
+            </a>
+	</div>
+
+	<?php 
+	 }
+	    if($sensor2 =='0'){
+        ?>
+        <div class="product-item" >
+            <?php if($u_id == ''){
+            ?>
+            <a class="product-item-link" href="/pay.php?bu=<?=$bu?>&id=<?=$result['p_id'] ?>">
+            <?php } else if($u_id != ''){?>
+              <a class="product-item-link" href="/pay.php?bu=<?=$bu?>&id=<?=$result['p_id']?>&u_id=<?=$u_id?>">
+              <?php }?>
+              <img class="product-img" src="<?=$result['img']?>" >
+              <p class="product-font1"><?=$result['name']?></p>
+              <p class="product-font2"><?=$result['p_price']?>฿</p>
+            </a>
+        </div>
+
+	<?php }else if($sensor2 == '1' && $product == '2'){ ?>
           <div class="product-item" >
             <a class="product-item-link">
               <img class="product-img" src="<?=$result['img']?>" >
@@ -139,7 +169,6 @@ $product = 0;
         <?php
 
         }}?>
-
       </div>
   </div>
 

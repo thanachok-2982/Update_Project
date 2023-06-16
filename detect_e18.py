@@ -16,6 +16,7 @@ default_high = True
 #Distance
 distance_sensor = e18_d80nk.e18_d80nk(pin,default_high)
 
+file_path = '/home/pi/Desktop/example.txt'
 time.sleep(1)
 running = True
 while(running):
@@ -24,7 +25,6 @@ while(running):
         #HIGH = NORMAL , LOW = OBJECT DETECT
         if (distance_sensor.get_state() == True):
             print ("Object is detect.")
-            file_path = '/home/pi/Desktop/example.txt'
             with open(file_path, 'w') as file:
                 file.write('This is an example file.')
             p1.pin_mode("p1", "OUTPUT")
@@ -55,12 +55,12 @@ while(running):
             p1.pin_mode("p5", "OUTPUT")
             p1.pin_mode("p6", "OUTPUT")
             p1.pin_mode("p7", "OUTPUT")
-            p1.write("p1", "HIGH")
-            p1.write("p2", "HIGH")
-            p1.write("p4", "HIGH")
-            p1.write("p5", "HIGH")
-            p1.write("p6", "HIGH")
-            p1.write("p7", "HIGH")
+            #p1.write("p1", "HIGH")
+            #p1.write("p2", "HIGH")
+            #p1.write("p4", "HIGH")
+            #p1.write("p5", "HIGH")
+            #p1.write("p6", "HIGH")
+            #p1.write("p7", "HIGH")
             p1.set_i2cBus(1)
             p1.get_i2cBus()
     except KeyboardInterrupt:

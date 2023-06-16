@@ -7,7 +7,7 @@ import time
 
 #importing the library of time
 
-sensor = 10
+sensor = 13
 i = 0
 #declaring BCM pin 16 which is GPIO 23 of Raspberry Pi
 

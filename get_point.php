@@ -11,31 +11,6 @@ $query = mysqli_query($db, "SELECT * FROM product WHERE p_id = $id");
 $result = mysqli_fetch_array($query);
 $query = mysqli_query($db, "SELECT * FROM vm_info WHERE vm_id = '$bu'");
 $vm_name = mysqli_fetch_array($query);
-if($id == 1){
-$data = array(
-    'message' => 'servo1'
-);} else if ($id == 2){
-$data = array(
-   'message' => 'servo2'
-);}
-
-// URL of the Flask server
-$url = 'http://localhost:5000/receive';
-
-// Initialize cURL
-$curl = curl_init($url);
-
-// Set cURL options
-curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
-curl_setopt($curl, CURLOPT_POST, true);
-curl_setopt($curl, CURLOPT_POSTFIELDS, $data);
-
-// Send the request and store the response
-$response = curl_exec($curl);
-#$servo = exec("python /var/www/html/servo.py");
-#echo $servo;
-#$servo = exec("python /var/www/html/servo.py $id");
-
 if($u_id != ''){
   $querys = mysqli_query($db, "SELECT * FROM user WHERE u_id = '$u_id'");
   $ruser = mysqli_fetch_array($querys);
