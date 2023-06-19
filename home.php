@@ -99,76 +99,53 @@
    
   <div class="container">
       <div class="product">
-        
-        <?php 
-        $sql = mysqli_query($db,"SELECT * FROM vm_info WHERE vm_id ='$bu'");
-        $vm =mysqli_fetch_array($sql);
-        $query = mysqli_query($db,"SELECT * FROM product");
-        
-        while($result = mysqli_fetch_array($query)){
-        ?>
-        <?php 
-        $product++;
-        
-         if($product == 1){
-          $p = $vm['product1'];
-         }else if($product == 2){
-          $p = $vm['product2'];
-         }else if ($product == 3){
-          $p = $vm['product3'];
-         }
-         if($sensor1 == '0'){
-        ?>
-        <div class="product-item" >
-            <?php if($u_id == ''){
-            ?>
-            <a class="product-item-link" href="/pay.php?bu=<?=$bu?>&id=<?=$result['p_id'] ?>">
-            <?php } else if($u_id != ''){?>
-              <a class="product-item-link" href="/pay.php?bu=<?=$bu?>&id=<?=$result['p_id']?>&u_id=<?=$u_id?>">
-              <?php }?>
-              <img class="product-img" src="<?=$result['img']?>" >
-              <p class="product-font1"><?=$result['name']?></p>
-              <p class="product-font2"><?=$result['p_price']?>฿</p>
-            </a>
-        </div>
+	<?php
+      $sql = mysqli_query($db, "SELECT * FROM vm_info WHERE vm_id ='$bu'");
+      $vm = mysqli_fetch_array($sql);
+      $query = mysqli_query($db, "SELECT * FROM product");
 
-	<?php }else if($sensor1 == '1' && $product == '1' ){ ?>
-          <div class="product-item" >
-            <a class="product-item-link">
-              <img class="product-img" src="<?=$result['img']?>" >
-              <p class="product-font1"><?=$result['name']?></p>
-              <p class="product-font2">สินค้าหมด</p>
-            </a>
-	</div>
-
-	<?php 
-	 }
-	    if($sensor2 =='0'){
-        ?>
-        <div class="product-item" >
-            <?php if($u_id == ''){
-            ?>
-            <a class="product-item-link" href="/pay.php?bu=<?=$bu?>&id=<?=$result['p_id'] ?>">
-            <?php } else if($u_id != ''){?>
-              <a class="product-item-link" href="/pay.php?bu=<?=$bu?>&id=<?=$result['p_id']?>&u_id=<?=$u_id?>">
-              <?php }?>
-              <img class="product-img" src="<?=$result['img']?>" >
-              <p class="product-font1"><?=$result['name']?></p>
-              <p class="product-font2"><?=$result['p_price']?>฿</p>
-            </a>
-        </div>
-
-	<?php }else if($sensor2 == '1' && $product == '2'){ ?>
-          <div class="product-item" >
-            <a class="product-item-link">
-              <img class="product-img" src="<?=$result['img']?>" >
-              <p class="product-font1"><?=$result['name']?></p>
-              <p class="product-font2">สินค้าหมด</p>
-            </a>
-        </div>
+      while ($result = mysqli_fetch_array($query)) {
+      ?>
         <?php
+        $product++;
 
-        }}?>
+        if ($product == 1) {
+          $p = $vm['product1'];
+          $sensor = $sensor1;
+        } else if ($product == 2) {
+          $p = $vm['product2'];
+          $sensor = $sensor2;
+        } else if ($product == 3) {
+          $p = $vm['product3'];
+          $sensor = $sensor3;
+        }
+        if ($p != '' && $sensor != 1) {
+        ?>
+          <div class="product-item">
+            <?php if ($u_id == '') {
+            ?>
+              <a class="product-item-link" href="/pay.php?bu=<?= $bu ?>&id=<?= $result['p_id'] ?>">
+              <?php } else if ($u_id != '') { ?>
+                <a class="product-item-link" href="/pay.php?bu=<?= $bu ?>&id=<?= $result['p_id'] ?>&u_id=<?= $u_id ?>">
+                <?php } ?>
+                <img class="product-img" src="<?= $result['img'] ?>">
+                <p class="product-font1"><?= $result['name'] ?></p>
+                <p class="product-font2"><?= $result['p_price'] ?>฿</p>
+                </a>
+          </div>
+
+        <?php } else if ($p != '' && $sensor != 0) { ?>
+          <div class="product-item">
+            <a class="product-item-link">
+              <img class="product-img" src="<?= $result['img'] ?>">
+              <p class="product-font1"><?= $result['name'] ?></p>
+              <p class="product-font2">สินค้าหมด</p>
+            </a>
+          </div>
+      <?php
+
+        }
+      } ?> 
       </div>
   </div>
 
