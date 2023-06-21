@@ -2,8 +2,31 @@
  include_once('dbConfig.php');
  $bu = isset($_GET['bu']);
  if($bu == ""){
- $bu = 1;
+	 $bu = 1;
  }
+ #$myfile = fopen("magnetic.txt", "w");
+ #$msg = '1';
+
+ #fwrite($myfile ,$msg."\n");
+ #fclose($myfile);
+ #$data = array(
+ #  'message' => 'magnetic_open'
+#);
+
+#// URL of the Flask server
+#$url = 'http://localhost:5000/receive';
+
+// Initialize cURL
+#$curl = curl_init($url);
+
+// Set cURL options
+#curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+#curl_setopt($curl, CURLOPT_POST, true);
+#curl_setopt($curl, CURLOPT_POSTFIELDS, $data);
+
+// Send the request and store the response
+#$response = curl_exec($curl);
+
 ?>
 
 <!DOCTYPE html>

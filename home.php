@@ -9,7 +9,25 @@
  echo $sensor1;
  $sensor2 = exec("python /var/www/html/sensor2.py");
  echo $sensor2;
+ #$data = array(
+ # 'message' => 'magnetic_open'
+#);
+
+// URL of the Flask server
+#$url = 'http://localhost:5000/receive';
+
+// Initialize cURL
+#$curl = curl_init($url);
+
+// Set cURL options
+#curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+#curl_setopt($curl, CURLOPT_POST, true);
+#curl_setopt($curl, CURLOPT_POSTFIELDS, $data);
+
+// Send the request and store the response
+#$response = curl_exec($curl);
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>

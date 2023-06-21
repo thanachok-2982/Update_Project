@@ -1,4 +1,3 @@
-#!/usr/bin/python
 import RPi.GPIO as GPIO
 import requests
 import time
@@ -31,6 +30,11 @@ p1.pin_mode("p7", "OUTPUT")
 p1.write("p1", "HIGH")
 p1.write("p2", "LOW")
 p1.write("p4", "HIGH")
-p1.write("p5", "HIGH")
+p1.write("p5", "LOW")
 p1.write("p6", "HIGH")
 p1.write("p7", "HIGH")
+#print(p1.read("p2"))
+
+# Additional you can do the following
+p1.set_i2cBus(1)
+p1.get_i2cBus()
