@@ -1,0 +1,286 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Thai:wght@400;500;600&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Noto Sans Thai', sans-serif;
+    text-decoration: none;
+  }
+
+  body {
+    background: #4361EE ;
+    margin-left: 0px;
+    margin-right: 0px;
+    margin-top: 0px;
+  }
+
+  header {
+    width: 100%;
+    height: 7vw;
+    background-image: linear-gradient( white, #EFEFEF);
+  }
+
+  .header-container {
+    max-width: 90vw;
+    height: 100%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .logo-header-text {
+    font-size: 2vw;
+    color: white;
+    margin: 0 10px;
+    background-color : #4361EE; 
+    border-radius: 100px;
+    padding: 5px 20px; 
+    box-shadow: 0 5px 10px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
+    text-decoration: none;
+  }
+
+  .logo-header-img {
+    width: 15vw;
+    height: 100%;
+    display: flex;
+    align-items: center;
+  }
+
+  nav {
+    width: 100vw;
+    height: 982px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+  }
+
+  .nav-bg {
+    width: 90vw;
+    height: 920px;
+    margin: auto;
+    background-color: white;
+    border-radius: 10px;
+  }
+
+  .nav-login {
+    width: 60vw;
+    height: 100%;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .nav-stock {
+    width: 85vw;
+    height: auto;
+    margin: 20px auto;
+  }
+
+
+
+  .nav-login-container {
+    width: 100%;
+    height: auto;
+  }
+
+  .nav-login-center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .logo-login {
+    width: 30vw;
+    height: auto;
+    margin: 20px auto;
+  }
+
+  .text-login {
+    font-size: 3vw;
+    font-weight: 600;
+    margin: 5px auto;
+    text-align: center;
+  }
+
+  .nav-input {
+    margin: 10px auto;
+  }
+
+  .text-input {
+    font-size: 2.2vw;
+    font-weight: 500;
+  }
+
+  .input-text {
+    padding: 10px;
+    width: 100%;
+    border: 1.5px solid #AAAAAA;
+    border-radius: 5px;
+    outline: none;
+    transition: 0.3s;
+    margin: 2px auto;
+    font-size: 1.8vw;
+  }
+
+  .input-text:focus {
+    border: 1.5px solid #4361EE;
+  }
+
+  .button-login {
+    width: 100%;
+    height: auto;
+    margin: 5px auto;
+  }
+
+  
+
+  .button-login-bg2 {
+    width: 100%;
+    height: 6vw;
+    border-radius: 5px;
+    background-color: #FB8500;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+  }
+
+  .button-login-bg2:hover {
+    background-color: #FF6200;
+  }
+
+  .text-button-login {
+    font-size: 2vw;
+    color: white;
+  }
+
+  .img-login {
+    width: 100%;
+    height: 200px;
+    margin-top: 20vw;
+  }
+  
+  .img-login-pic {
+    width: 100%;
+    height: 100%;
+  }
+
+  .img-pic {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+
+  .nav-table {
+    width: 100%;
+    height: auto;
+  }
+
+  table {
+    border-collapse: collapse;
+    width: 100%;
+  }
+  
+  th, td {
+    text-align: center;
+    padding: 10px;
+    font-size: 2vw;
+  }
+  
+  tr:nth-child(even) {
+    background-color: #F4F6FF;
+  }
+
+  th {
+    background-color:#4361EE;
+    color: white;
+  }
+
+  .img-product-stock {
+    width: 10vw;
+    height: 10vw;
+    object-fit: cover;
+  }
+
+  .nav-button-addstock {
+    margin-top: 82vw;
+    margin-bottom: 10px;
+  }
+
+  .button-left-right {
+    width: 100%;
+    height: auto;
+    margin-top: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+  }
+  
+
+
+  .button-left-bg {
+    width: 20vw;
+    height: 6vw;
+    border-radius: 100px;
+    background-color: #FB8500;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .button-left-bg:hover {
+    background-color: #FF6200;
+  }
+
+  .button-right-bg {
+    width: 20vw;
+    height: 6vw;
+    border-radius: 100px;
+    background-color: #D90429;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .button-right-bg:hover {
+    background-color: #C90426;
+  }
+
+  .button-all-text {
+    color: white;
+    font-size: 2vw;
+  }
+
+  .add-stock {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+  }
+
+  .add-stock-icon {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+  }
+
+  .icon-addstock {
+    width: 2vw;
+    height: 2vw;
+    margin: 0 5px;
+  }
+
+
+
+
+
+
+
