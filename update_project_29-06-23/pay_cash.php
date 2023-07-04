@@ -198,7 +198,7 @@ fclose($myfile);
 
           if (countdown <= 0) {
             clearInterval(timer);
-            window.location.href = "/home.php"; // เปลี่ยนไปยังหน้าอื่น
+            window.location.href = "home.php?bu=<?= $bu ?>"; // เปลี่ยนไปยังหน้าอื่น
           } else {
             countdown--;
           }
