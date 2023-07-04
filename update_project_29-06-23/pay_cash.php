@@ -186,7 +186,7 @@ fclose($myfile);
     <script>
       window.onload = function() {
         var countdownElement = document.getElementById("countdown");
-        var countdown = 1 * 60; // 1 นาทีในหน่วยวินาที
+        var countdown = 2 * 60; // 1 นาทีในหน่วยวินาที
 
         var timer = setInterval(updateCountdown, 1000);
 
