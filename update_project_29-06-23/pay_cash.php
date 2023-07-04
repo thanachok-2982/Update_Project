@@ -308,7 +308,7 @@ fclose($myfile);
     setTimeout(function() {
       window.location.href = "home.php?bu=<?= $bu ?>";
       window.clearTimeout;
-    }, 60000);
+    }, 120000);
   </script>
 
 </body>
