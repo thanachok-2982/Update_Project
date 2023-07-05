@@ -186,7 +186,7 @@ fclose($myfile);
     <script>
       window.onload = function() {
         var countdownElement = document.getElementById("countdown");
-        var countdown = 1 * 60; // 1 นาทีในหน่วยวินาที
+        var countdown = 2 * 60; // 1 นาทีในหน่วยวินาที
 
         var timer = setInterval(updateCountdown, 1000);
 
@@ -198,7 +198,7 @@ fclose($myfile);
 
           if (countdown <= 0) {
             clearInterval(timer);
-            window.location.href = "/home.php"; // เปลี่ยนไปยังหน้าอื่น
+            window.location.href = "home.php?bu=<?= $bu ?>"; // เปลี่ยนไปยังหน้าอื่น
           } else {
             countdown--;
           }
@@ -308,7 +308,7 @@ fclose($myfile);
     setTimeout(function() {
       window.location.href = "home.php?bu=<?= $bu ?>";
       window.clearTimeout;
-    }, 60000);
+    }, 120000);
   </script>
 
 </body>
