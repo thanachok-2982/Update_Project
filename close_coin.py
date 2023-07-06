@@ -34,3 +34,6 @@ p1.write("p4", "HIGH")
 # p1.write("p5", "HIGH")
 # p1.write("p6", "HIGH")
 # p1.write("p7", "HIGH")
+
+p1.set_i2cBus(1)
+p1.get_i2cBus()
