@@ -309,82 +309,22 @@ if ($u_id != '') {
   </div>
 
   <footer>
-    <div class="footer-container">
-      <div class="footer-button-logo">
-        <div class="footer-button">
-          <p class="button-text">เลือกภาษา</p>
-          <button class="button-thai">ไทย</button>
-          <button class="button-eng">Eng</button>
+        <div class="footer-container">
+            <div class="footer-button-logo">
+                <div class="footer-button">
+                    <p id="index_language" class="button-text"></p>
+                    <div id="myDIV">
+                        <button class="buttonTHEN active" onclick="changeLanguage('th')">ไทย</button>
+                        <button class="buttonTHEN " onclick="changeLanguage('en')">Eng</button>
+                    </div>
+                </div>
+
+                <div class="footer-logo">
+                    <img src="/pic/school-of-engineering.png" class="logo-university" />
+                </div>
+            </div>
         </div>
-
-        <div class="foorter-logo">
-          <img src="/pic/school-of-engineering.png" class="logo-university">
-        </div>
-      </div>
-
-    </div>
-  </footer>
-
-  <style>
-        footer {
-            width: 100%;
-            height: 7vw;
-            background-image: linear-gradient(white, #efefef);
-        }
-
-        .footer-container {
-            max-width: 90vw;
-            height: 100%;
-            margin: 0 auto;
-            display: flex;
-            align-items: center;
-            color: white;
-        }
-
-        .footer-button-logo {
-            width: 90vw;
-            height: 100%;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-        }
-
-        .footer-button {
-            display: flex;
-            align-items: center;
-        }
-
-        .button-text {
-            color: black;
-            font-size: 2vw;
-            margin-right: 10px;
-        }
-
-        .buttonTHEN {
-            font-size: 2vw;
-            color: black;
-            border: 2px solid #d6d6d6;
-            margin: 0 2px;
-            background-color: white;
-            border-radius: 100px;
-            padding: 5px 25px;
-            text-decoration: none;
-            cursor: pointer;
-        }
-
-        .active,
-        .buttonTHEN:hover {
-            color: white;
-            border: 2px solid #3046b1;
-            background-color: #3046b1;
-        }
-
-        .logo-university {
-            width: 15vw;
-            align-items: center;
-            display: flex;
-        }
-    </style>
+    </footer>
 
   <script>
     var btn = document.querySelectorAll(".r > div");
