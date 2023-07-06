@@ -208,8 +208,8 @@ $vm_name = mysqli_fetch_array($query);
                   <div class="popup" id="popup">
                       <img src="https://pngimg.com/d/exclamation_mark_PNG32.png"  >
                       <h2>คำเตือน</h2>
-                      <p style="font-size: 18px;">ระบบเครื่องไม่สามารถคืนเหรียญได้ ทางเราจะเก็บเป็นระบบเครดิตแทนค่ะ</p>
-                      <button type="button" onclick="window.location.href = 'pay_cash.php?bu=<?=$bu?>&id=<?=$id?>&method=cash&price=<?=$result['p_price']?>';">OK</button>
+                      <p style="font-size: 18px;">ระบบไม่สามารถคืนเหรียญให้ท่านได้ ทางเราจะเก็บเป็นระบบเครดิตเงินเกินแทนค่ะ</p>
+                      <button type="button" onclick="window.location.href = 'pay_cash.php?bu=<?=$bu?>&id=<?=$id?>&method=cash&price=<?=$result['p_price']?>';">ดำเนินการต่อ</button>
                   </div>
                   
 
@@ -227,8 +227,8 @@ $vm_name = mysqli_fetch_array($query);
                     <div class="popup" id="popup">
                         <img src="https://pngimg.com/d/exclamation_mark_PNG32.png"  >
                         <h2>คำเตือน</h2>
-                        <p style="font-size: 18px;">ระบบเครื่องไม่สามารถคืนเหรียญได้ ทางเราจะเก็บเป็นระบบเครดิตแทนค่ะ</p>
-                        <button type="button" onclick="window.location.href = 'pay_cash.php?bu=<?=$bu?>&id=<?=$id?>&method=cash&price=<?= $result['p_price']?>&u_id=<?= $u_id?>';">OK</button>
+                        <p style="font-size: 18px;">ระบบไม่สามารถคืนเหรียญให้ท่านได้ ทางเราจะเก็บเป็นระบบเครดิตเงินเกินแทนค่ะ</p>
+                        <button type="button" onclick="window.location.href = 'pay_cash.php?bu=<?=$bu?>&id=<?=$id?>&method=cash&price=<?= $result['p_price']?>&u_id=<?= $u_id?>';">ดำเนินการต่อ</button>
                     </div>
                     
 
