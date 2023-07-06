@@ -297,7 +297,7 @@ $vm_name = mysqli_fetch_array($query);
       
       <div class="footer-button-logo">
         <div class="footer-button">
-          <p id="index_language" class="button-text"></p>
+          <p id="index_language" class="button-text">ภาษา</p>
           <div id="myDIV">
             <button class="buttonTHEN active" onclick="changeLanguage('th')">ไทย</button>
             <button class="buttonTHEN" onclick="changeLanguage('en')">Eng</button>
