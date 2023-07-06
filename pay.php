@@ -3,7 +3,7 @@ include_once('dbConfig.php');
 $id = $_GET['id'];
 $bu = $_GET['bu'];
 $u_id = isset($_GET['u_id']);
-$query = mysqli_query($db, "SELECT * FROM product WHERE p_id = $id");
+$query = mysqli_query($db, "SELECT * FROM product WHERE p_id = $id"); 
 $result = mysqli_fetch_array($query);
 $query = mysqli_query($db, "SELECT * FROM vm_info WHERE vm_id = '$bu'");
 $vm_name = mysqli_fetch_array($query);
