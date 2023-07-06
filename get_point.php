@@ -280,7 +280,7 @@ if ($u_id != '') {
       </div>
       <!-------------------------------------------------------------->
       <div class="button-skip-bg">
-        <a id="content_title_pay3" class="button-skip" window.location.href = "wait.php?bu=<?= $bu ?>&id=<?= $id ?>&method=cash&price=<?= $price ?>&u_id=0">ดำเนินการต่อโดยไม่สะสมคะเเนน</a>
+        <a id="content_title_pay3" class="button-skip" href="wait.php?bu=<?= $bu ?>&id=<?= $id ?>&method=cash&price=<?= $price ?>&u_id=0">ดำเนินการต่อโดยไม่สะสมคะเเนน</a>
       </div>
 
       <style>
