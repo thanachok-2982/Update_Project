@@ -85,7 +85,7 @@ if ($u_id != '') {
       <div class="text-icon">
         <div class="text-bg">
           <div class="text">
-            <p> 1.เลือกรายการสินค้า</p>
+            <p id="heading1" > 1.เลือกรายการสินค้า</p>
           </div>
         </div>
 
@@ -95,7 +95,7 @@ if ($u_id != '') {
 
         <div class="text-bg">
           <div class="text">
-            <p>2.เลือกวิธีชำระเงิน</p>
+            <p id="heading2">2.เลือกวิธีชำระเงิน</p>
           </div>
         </div>
 
@@ -104,12 +104,12 @@ if ($u_id != '') {
         </div>
 
         <div class="text">
-          <p>3.รับสินค้า</p>
+          <p id="heading3">3.รับสินค้า</p>
         </div>
       </div>
 
       <div class="point-text">
-        <a class="logo-point" href="/phone_points.php">คะเเนนสะสม</a>
+        <a id="heading_points" class="logo-point" href="/phone_points.php">คะเเนนสะสม</a>
       </div>
 
     </div>
@@ -138,7 +138,7 @@ if ($u_id != '') {
         <div class="container-right-column">
 
           <div class="box-tab-right">
-            <p class="text-box">สะสมคะเเนน</p>
+            <p id="content_title_pay" class="text-box">สะสมคะเเนน</p>
           </div>
         </div>
 
@@ -147,9 +147,9 @@ if ($u_id != '') {
 
             <div class="numpad">
               <?php if ($newu_id == '') { ?>
-                <p class="product-font1">ใส่เบอร์มือถือ เพื่อสะสมคะเเนน</p>
+                <p id="content_title_pay1" class="product-font1">ใส่เบอร์มือถือ เพื่อสะสมคะเเนน</p>
               <?php } else if ($newu_id != '') { ?>
-                <p class="product-font1">ตั้งรหัส เพื่อสะสมคะแนน</p>
+                <p id="content_title_pay2" class="product-font1">กรุณาตั้งรหัสผ่าน เพื่อสะสมคะแนน</p>
               <?php } ?>
 
             </div>
@@ -280,7 +280,7 @@ if ($u_id != '') {
       </div>
       <!-------------------------------------------------------------->
       <div class="button-skip-bg">
-        <a id="content_title_pay3" class="button-skip" window.location.href = "wait.php?bu=<?= $bu ?>&id=<?= $id ?>&method=cash&price=<?= $price ?>&u_id=0">ดำเนินการต่อโดยไม่สะสมคะเเนน</a>
+        <a id="content_title_pay3" class="button-skip" href="wait.php?bu=<?= $bu ?>&id=<?= $id ?>&method=cash&price=<?= $price ?>&u_id=0">ดำเนินการต่อโดยไม่สะสมคะเเนน</a>
       </div>
 
       <style>
@@ -309,21 +309,22 @@ if ($u_id != '') {
   </div>
 
   <footer>
-    <div class="footer-container">
-      <div class="footer-button-logo">
-        <div class="footer-button">
-          <p class="button-text">เลือกภาษา</p>
-          <button class="button-thai">ไทย</button>
-          <button class="button-eng">Eng</button>
-        </div>
+        <div class="footer-container">
+            <div class="footer-button-logo">
+                <div class="footer-button">
+                    <p id="index_language" class="button-text">ภาษา</p>
+                    <div id="myDIV">
+                        <button class="buttonTHEN active" onclick="changeLanguage('th')">ไทย</button>
+                        <button class="buttonTHEN " onclick="changeLanguage('en')">Eng</button>
+                    </div>
+                </div>
 
-        <div class="foorter-logo">
-          <img src="/pic/school-of-engineering.png" class="logo-university">
+                <div class="footer-logo">
+                    <img src="/pic/school-of-engineering.png" class="logo-university" />
+                </div>
+            </div>
         </div>
-      </div>
-
-    </div>
-  </footer>
+    </footer>
 
   <script>
     var btn = document.querySelectorAll(".r > div");
@@ -430,5 +431,92 @@ if ($u_id != '') {
     </script>
   <?php } ?>
 </body>
+
+    <!-- Script สำหรับภาษา -->
+
+  <script src="script.js"></script>
+  <script>
+    function changeLanguage(lang) {
+
+      const heading = document.getElementById('heading');
+      const heading1 = document.getElementById('heading1');
+      const heading2 = document.getElementById('heading2');
+      const heading3 = document.getElementById('heading3');
+      const heading_points = document.getElementById('heading_points');
+
+      const content_back = document.getElementById('content_back');
+      const content_title_pay = document.getElementById('content_title_pay');
+      const content_title_pay1 = document.getElementById('content_title_pay1');
+      const content_title_pay2 = document.getElementById('content_title_pay2');
+      const content_title_pay3 = document.getElementById('content_title_pay3');
+      const content_title_pay4 = document.getElementById('content_title_pay4');
+
+      const index_language = document.getElementById('index_language');
+
+      if (lang === 'th') {
+
+        heading.innerText = 'สาขา BU123';
+        heading1.innerText = '1.เลือกรายการสินค้า';
+        heading2.innerText = '2.เลือกวิธีชำระเงิน';
+        heading3.innerText = '3.รับสินค้า';
+        heading_points.innerText = 'คะเเนนสะสม';
+
+        content_back.innerText = 'ย้อนกลับ';
+        content_title_pay.innerText = 'สะสมคะเเนน';
+        content_title_pay1.innerText = 'ใส่เบอร์มือถือ เพื่อสะสมคะเเนน';
+        content_title_pay2.innerText = 'กรุณาตั้งรหัสผ่าน เพื่อสะสมคะแนน';
+        content_title_pay3.innerText = 'ดำเนินการต่อโดยไม่สะสมคะเเนน';
+        
+
+        index_language.innerText = 'ภาษา';
+
+
+      } else if (lang === 'en') {
+
+        heading.innerText = 'Branch BU123';
+        heading1.innerText = '1.Select products';
+        heading2.innerText = '2.Choose payment';
+        heading3.innerText = '3.Pick up';
+        heading_points.innerText = 'Points';
+
+        content_back.innerText = 'Back';
+        content_title_pay.innerText = 'Collect Points';
+        content_title_pay1.innerText = 'Enter mobile number to collect points';
+        content_title_pay2.innerText = 'Please set code to collect points';
+        content_title_pay3.innerText = 'Continue without collecting points';
+        
+
+        index_language.innerText = 'Language';
+
+      }
+
+      // บันทึกภาษาที่เลือกในคุกกี้
+      document.cookie = `lang=${lang}; path=/`;
+    }
+
+    function getLanguage() {
+      // อ่านค่าภาษาที่เลือกจากคุกกี้
+      const cookies = document.cookie.split(';');
+      for (let i = 0; i < cookies.length; i++) {
+        const cookie = cookies[i].trim();
+        if (cookie.startsWith('lang=')) {
+          return cookie.substring(5);
+        }
+      }
+
+      // ถ้าไม่มีคุกกี้ภาษา ให้ใช้ภาษาเริ่มต้น (ภาษาไทย)
+      return 'th';
+    }
+  </script>
+
+  <script>
+    // โหลดภาษาที่เลือกจากคุกกี้เมื่อหน้าถูกโหลด
+    window.addEventListener("load", function() {
+      const lang = getLanguage();
+      changeLanguage(lang);
+    });
+  </script>
+
+  <!-- Script สำหรับภาษา -->
 
 </html>
