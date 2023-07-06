@@ -27,6 +27,60 @@ $vm_name = mysqli_fetch_array($query);
 
   <link href="/style.css" type="text/css" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <style>
+        .popup {
+            width: 400px;
+            background: #fff;
+            border-radius: 6px;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            padding: 0 30px 30px;
+            color: #333;
+            visibility: hidden;
+            z-index: 2;
+          }
+        .popup img{
+            width: 100px;
+            margin-top: -50px;
+            border-radius: 50%;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+        .popup h2{
+            font-size: 38px;
+            font-weight: 500;
+            margin: 30px 0 10px;
+        }
+        .popup button{
+            width: 100%;
+            margin-top: 30px;
+            padding: 10px 0;
+            background: #6fd649;
+            color: #fff;
+            border: 0;
+            outline: none;
+            font-size: 18px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        .popup button:hover {
+          background-color: #5ac02a; 
+        }
+        .overlay {
+          position: fixed;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          background-color: rgba(0, 0, 0, 0.5);
+          visibility: hidden;
+          z-index: 1;
+          bottom: 0; 
+        }
+    </style>
 </head>
 
 <body>
@@ -148,7 +202,17 @@ $vm_name = mysqli_fetch_array($query);
                 fwrite($myfile, $msg . "\n");
                 fclose($myfile);
               ?>
-                <a class="pay-cash-link" href="/pay_cash.php?bu=<?=$bu?>&id=<?=$id?>&method=cash&price=<?=$result['p_price']?>">
+ 
+                <a class="pay-cash-link" onclick="openPopup()">
+                
+                  <div class="popup" id="popup">
+                      <img src="https://pngimg.com/d/exclamation_mark_PNG32.png"  >
+                      <h2>คำเตือน</h2>
+                      <p style="font-size: 18px;">ระบบเครื่องไม่สามารถคืนเหรียญได้ ทางเราจะเก็บเป็นระบบเครดิตแทนค่ะ</p>
+                      <button type="button" onclick="window.location.href = 'pay_cash.php?bu=<?=$bu?>&id=<?=$id?>&method=cash&price=<?=$result['p_price']?>';">OK</button>
+                  </div>
+                  
+
                 <?php
               } else if ($u_id != '') {
                 $myfile = fopen("text.txt", "w");
@@ -157,7 +221,17 @@ $vm_name = mysqli_fetch_array($query);
                 fwrite($myfile, $msg . "\n");
                 fclose($myfile);
                 ?>
-                  <a class="pay-cash-link" href="/pay_cash.php?bu=<?=$bu?>&id=<?=$id?>&method=cash&price=<?= $result['p_price']?>&u_id=<?= $u_id?>">
+
+                  <a class="pay-cash-link" onclick="openPopup()">
+                  
+                    <div class="popup" id="popup">
+                        <img src="https://pngimg.com/d/exclamation_mark_PNG32.png"  >
+                        <h2>คำเตือน</h2>
+                        <p style="font-size: 18px;">ระบบเครื่องไม่สามารถคืนเหรียญได้ ทางเราจะเก็บเป็นระบบเครดิตแทนค่ะ</p>
+                        <button type="button" onclick="window.location.href = 'pay_cash.php?bu=<?=$bu?>&id=<?=$id?>&method=cash&price=<?= $result['p_price']?>&u_id=<?= $u_id?>';">OK</button>
+                    </div>
+                    
+
                   <?php } ?>
 
                   <img class="cash-img" src="/pic/cash.png">
@@ -217,7 +291,7 @@ $vm_name = mysqli_fetch_array($query);
     </div>
 
   </div>
-
+  <div class="overlay" id="overlay" onclick="closePopup()"></div>
   <footer>
     <div class="footer-container">
       
@@ -240,6 +314,22 @@ $vm_name = mysqli_fetch_array($query);
 
 
 </body>
+<script>
+  function openPopup() {
+    var popup = document.getElementById("popup");
+    var overlay = document.getElementById("overlay");
+    popup.style.visibility = "visible";
+    overlay.style.visibility = "visible";
+  }
+
+  function closePopup() {
+    var popup = document.getElementById("popup");
+    var overlay = document.getElementById("overlay");
+    popup.style.visibility = "hidden";
+    overlay.style.visibility = "hidden";
+  }
+</script>
+
 
 <!-- Script สำหรับภาษา -->
 
