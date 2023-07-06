@@ -325,6 +325,67 @@ if ($u_id != '') {
     </div>
   </footer>
 
+  <style>
+        footer {
+            width: 100%;
+            height: 7vw;
+            background-image: linear-gradient(white, #efefef);
+        }
+
+        .footer-container {
+            max-width: 90vw;
+            height: 100%;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            color: white;
+        }
+
+        .footer-button-logo {
+            width: 90vw;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .footer-button {
+            display: flex;
+            align-items: center;
+        }
+
+        .button-text {
+            color: black;
+            font-size: 2vw;
+            margin-right: 10px;
+        }
+
+        .buttonTHEN {
+            font-size: 2vw;
+            color: black;
+            border: 2px solid #d6d6d6;
+            margin: 0 2px;
+            background-color: white;
+            border-radius: 100px;
+            padding: 5px 25px;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        .active,
+        .buttonTHEN:hover {
+            color: white;
+            border: 2px solid #3046b1;
+            background-color: #3046b1;
+        }
+
+        .logo-university {
+            width: 15vw;
+            align-items: center;
+            display: flex;
+        }
+    </style>
+
   <script>
     var btn = document.querySelectorAll(".r > div");
     var inp = document.querySelector("input");
