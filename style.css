@@ -136,7 +136,7 @@ figure {
 
 .text-container-title {
   width: 90vw;
-  height: 674px;
+  height: 632px;
   margin: 0 auto;
   display: flex;
   flex-direction: column;
@@ -712,12 +712,12 @@ figure {
   width: 100%;
   height: 100%;
   display: flex;
-  justify-content: center;
+  justify-content: space-around;
   align-items: flex-end;
 }
 
 .button-left {
-  width: auto;
+  width: 50%;
   margin: 0 10px;
   background-color: white;
   border: 2px solid #4361ee;
@@ -729,7 +729,7 @@ figure {
 }
 
 .button-right {
-  width: auto;
+  width: 50%;
   margin: 0 10px;
   background-color: #4361ee;
   border: 2px solid #4361ee;
@@ -1036,48 +1036,27 @@ footer {
   margin-right: 10px;
 }
 
-.button-thai {
-  font-size: 2vw;
-  color: white;
-  border: 2px solid #4361ee;
-  margin: 0 5px;
-  background-color: #4361ee;
-  border-radius: 100px;
-  padding: 5px 25px;
-  box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.24),
-    0 17px 50px 0 rgba(0, 0, 0, 0.19);
-  text-decoration: none;
-  cursor: pointer;
-}
-
-.button-thai:hover {
-  border: 2px solid #3046b1;
-  background-color: #3046b1;
-}
-
-.button-eng {
+.buttonTHEN {
   font-size: 2vw;
   color: black;
   border: 2px solid #d6d6d6;
-  margin: 0 5px;
+  margin: 0 2px;
   background-color: white;
   border-radius: 100px;
   padding: 5px 25px;
   text-decoration: none;
   cursor: pointer;
-  box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.24),
-    0 17px 50px 0 rgba(0, 0, 0, 0.19);
 }
 
-.button-eng:hover {
+.active,
+.buttonTHEN:hover {
   color: white;
-  border: 2px solid #fb8500;
-  background-color: #fb8500;
+  border: 2px solid #3046b1;
+  background-color: #3046b1;
 }
 
 .logo-university {
   width: 15vw;
-  height: 100%;
   align-items: center;
   display: flex;
 }
