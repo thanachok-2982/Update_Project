@@ -41,12 +41,12 @@ $bu = 1;
 
                         <div class="nav-input">
                             <p class="text-input">Username</p>
-                            <input type="text" name="user" class="input-text" placeholder="Username พนักงาน">
+                            <input type="text" name="user" class="input-text" placeholder="Username พนักงาน" autocomplete="new-password">
                         </div>
 
                         <div class="nav-input">
                             <p class="text-input">Password</p>
-                            <input type="text" name="pass" class="input-text" placeholder="Password">
+                            <input type="text" name="pass" class="input-text" placeholder="Password" autocomplete="new-password">
                         </div>
                         <style>
                             .button-login-bg1 .button {
@@ -88,7 +88,7 @@ $bu = 1;
 
                         <div class="button-login">
                             <div class="button-login-bg1">
-                                <button type="submit" name='btn-ok' class="button">เข้าสู่ระบบ
+                                <button type="submit" name='btn-ok' class="button" >เข้าสู่ระบบ 
                             </div>
                         </div>
                     </div>

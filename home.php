@@ -6,9 +6,10 @@ $query = mysqli_query($db, "SELECT * FROM vm_info WHERE vm_id = '$bu'");
 $vm_name = mysqli_fetch_array($query);
 $product = 0;
 $sensor1 = exec("python /var/www/html/sensor1.py");
-echo $sensor1;
+#echo $sensor1;
 $sensor2 = exec("python /var/www/html/sensor2.py");
-echo $sensor2;
+#cho $sensor2;
+$sensor3 = 0;
 #$data = array(
 # 'message' => 'magnetic_open'
 #);

@@ -113,7 +113,10 @@ $vm_name = mysqli_fetch_array($query);
       <div class="text-number-all">
         <div class="text-name-number1">
           <p id="content_title_pay" class="text-number1"></p>
-          <p class="text-number2"><?= $ruser['phone'] ?></p>
+          <?php 
+          $phone = substr($ruser['phone'], 6, 10);
+          ?>
+          <p class="text-number2">XXX - XXXX - <?= $phone ?></p>
         </div>
 
         <hr>

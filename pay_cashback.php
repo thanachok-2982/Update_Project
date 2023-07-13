@@ -171,8 +171,14 @@ $vm_name = mysqli_fetch_array($query);
             </div>
 
             <div class="flex-disp">
-              <input type="text" name="text" class="flex-indis" required placeholder="กรอกเบอร์มือถือ">
+            <input type="text" name="text" class="flex-indis" style="visibility: none;" required placeholder="กรอกเบอร์มือถือ">
+              <input type="text" name="text2" class="flex-indis-hidd" style="position: absolute;
+    left: 0;
+    top: 0;
+    visibility: visible;
+    display: block;" required placeholder="กรอกเบอร์มือถือ">
             </div>
+
             <div class="nums">
               <div class="flex r r1">
                 <div><span>1</span></div>
@@ -231,6 +237,16 @@ $vm_name = mysqli_fetch_array($query);
             outline: none;
           }
 
+          .flex-indis-hidd {
+            width: 40vw;
+            height: 7vw;
+            font-size: 2vw;
+            text-align: center;
+            border: 2px solid #fb8500;
+            border-radius: 10px;
+            outline: none;
+          }
+
           .indis:focus {
             box-shadow: 0 2px 10px 0 rgba(0, 0, 0, 0.24),
               0 17px 50px 0 rgba(0, 0, 0, 0.19);
@@ -253,10 +269,6 @@ $vm_name = mysqli_fetch_array($query);
             align-items: center;
             border-radius: 50%;
             cursor: pointer;
-          }
-
-          .numPan .nums>.r div:hover {
-            background: #3046b1;
           }
 
           .numPan .nums>.r div:hover {
@@ -318,10 +330,6 @@ $vm_name = mysqli_fetch_array($query);
     </div>
   </footer>
 
-  <script>
-    var btn = document.querySelectorAll(".r > div");
-    var inp = document.querySelector("input");
-  </script>
 
   <?php
 
@@ -356,26 +364,39 @@ $vm_name = mysqli_fetch_array($query);
   }
   ?>
 
-  <script>
-    btn.forEach(val => {
-      val.addEventListener("click", () => {
-        if (inp.value.length <= 9)
-          inp.value += val.innerText;
-
-        if (inp.value.length > 10) {
-          inp.value = "";
-          inp.value += val.innerText;
-        }
-
-        if (val.innerText == "ลบ")
-          inp.value = "";
-
-      })
-    })
-    setTimeout(function () {
-      window.location.href = "home.php?bu=<?= $bu ?>";
-    }, 60000);
-  </script>
+<script>
+        var btn = document.querySelectorAll(".r > div");
+        var inp = document.querySelector("input");
+        var inps = document.querySelector("input.flex-indis-hidd");
+    
+        btn.forEach(val => {
+          val.addEventListener("click", () => {
+            if (inp.value.length <= 9)
+              inp.value += val.innerText;
+            
+            if (inp.value.length > 10) {
+              inp.value = "";
+              inp.value += val.innerText;
+            }
+    
+            if (val.innerText == "ลบ")
+              inp.value = "";
+    
+            if (inp.value.length >= 4) {
+            var maskLength = inp.value.length - 4
+            var maskChar = "*".repeat(maskLength)
+            var last4 = inp.value.slice(-4)
+            inps.value = maskChar + last4
+          } else {
+            inps.value = inp.value
+          }
+          })
+        }) 
+    
+        setTimeout(function() {
+          window.location.href = "home.php?bu=<?= $bu ?>";
+        }, 60000);
+      </script>
 
 </body>
 
