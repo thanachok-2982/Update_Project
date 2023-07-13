@@ -9,6 +9,7 @@ app = Flask(__name__)
 @app.route('/receive', methods=['POST'])
 def receive_data():
     data = request.form['message']
+    
     if data == 'servo1':        
         try:
             subprocess.run(['python', '/var/www/html/close_coin.py'])
