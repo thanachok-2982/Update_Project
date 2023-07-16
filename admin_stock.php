@@ -2,6 +2,27 @@
 include_once('dbConfig.php');
 $bu = $_GET['bu'];
 $product = 0;
+
+if (isset($_POST['open_door'])) {
+    $data = array(
+        'message' => 'open'
+    );
+
+    // URL of the Flask server
+    $url = 'http://localhost:5000/receive';
+
+    // Initialize cURL
+    $curl = curl_init($url);
+
+    // Set cURL options
+    curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+    curl_setopt($curl, CURLOPT_POST, true);
+    curl_setopt($curl, CURLOPT_POSTFIELDS, $data);
+
+    // Send the request and store the response
+    $response = curl_exec($curl);
+}
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -105,7 +126,7 @@ $product = 0;
               <h4 style="color: #55a630;">ประตูเปิดอยู่</h4>
             </div>
             <div class="button-open">
-              <button class="open-door" onclick="">เปิดประตู</button>
+              <button class="open-door" onclick="openDoor()">เปิดประตู</button>
             </div>
           </div>
         </div>
@@ -139,3 +160,8 @@ $product = 0;
   </nav>
 
 </body>
+
+
+
+
+
