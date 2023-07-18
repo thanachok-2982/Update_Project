@@ -9,7 +9,7 @@ import os # เรียกใช้ library os
 
 
 
-pin = 23
+pin = 24
 # กำหนด pin 
 p1 = pcf8574_io.PCF(0x20)
 # กำหนด Address เพื่ออ้างอิงว่าจะสื่อสารกับ IC ตัวไหน โดย PCF8574 นั้นมีให้ set ได้ถึง 8 address
@@ -39,7 +39,7 @@ while(running):
             p1.write("p5", "HIGH")
             p1.set_i2cBus(1)
             p1.get_i2cBus()
-            time.sleep(5)
+           # time.sleep(1)
             # เมื่อ distance_sensor.get_state() == True จะสั่งให้ มีสภานะเป็น HIGH
 
         else:
@@ -51,7 +51,4 @@ while(running):
 
     except KeyboardInterrupt:
         running = False
-        p1.write("p5", "HIGH")
-        p1.set_i2cBus(1)
-        p1.get_i2cBus()
         # ถ้าผู้ใช้กด Ctrl-C (KeyboardInterrupt) โปรแกรมจะสิ้นสุดการทำงาน

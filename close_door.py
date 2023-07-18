@@ -33,7 +33,7 @@ p1.pin_mode("p6", "OUTPUT")
 p1.pin_mode("p7", "OUTPUT")
 
 def on():
-    p1.write("p0", "LOW")
+    p1.write("p2", "LOW")
     #p1.write("p1", "HIGH")
     #p1.write("p2", "HIGH")
     #p1.write("p4", "HIGH")
@@ -46,7 +46,7 @@ def on():
     #time.sleep(3)
 
 def off():
-    p1.write("p0", "HIGH")
+    p1.write("p2", "HIGH")
     #p1.write("p1", "HIGH")
     #p1.write("p2", "HIGH")
     #p1.write("p4", "HIGH")
@@ -61,9 +61,9 @@ def off():
     p1.get_i2cBus()
     #time.sleep(3)
 
-for x in range(1):
+for x in range(5):
     
     off()
-    time.sleep(2)
+    time.sleep(1)
     on()
     time.sleep(2)

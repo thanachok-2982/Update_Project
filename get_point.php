@@ -157,9 +157,21 @@ if ($u_id != '') {
             <div class="flex-disp">
 
               <?php if ($newu_id == '') { ?>
-                <input type="text" name="text" class="flex-indis" required placeholder="กรอกเบอร์มือถือ">
+                <input type="text" name="text" class="flex-indis" style="visibility: none;" required placeholder="กรอกเบอร์มือถือ">
+              <input type="text" name="text2" class="flex-indis-hidd" style="position: absolute;
+    left: 0;
+    top: 0;
+    visibility: visible;
+    display: block;" required placeholder="กรอกเบอร์มือถือ">
+           
               <?php } else if ($newu_id != '') { ?>
-                <input type="text" name="text" class="flex-indis" required placeholder="กรอกรหัสผ่าน 6 ตัว">
+                <input type="text" name="text" class="flex-indis" style="visibility: none;" required placeholder="กรอกรหัสผ่าน 6 ตัว">
+              <input type="text" name="text2" class="flex-indis-hidd" style="position: absolute;
+    left: 0;
+    top: 0;
+    visibility: visible;
+    display: block;" required placeholder="กรอกรหัสผ่าน 6 ตัว">
+           
               <?php } ?>
 
             </div>
@@ -212,6 +224,16 @@ if ($u_id != '') {
           }
 
           .flex-indis {
+            width: 40vw;
+            height: 7vw;
+            font-size: 2vw;
+            text-align: center;
+            border: 2px solid #fb8500;
+            border-radius: 10px;
+            outline: none;
+          }
+
+          .flex-indis-hidd {
             width: 40vw;
             height: 7vw;
             font-size: 2vw;
@@ -326,10 +348,11 @@ if ($u_id != '') {
         </div>
     </footer>
 
-  <script>
+<script>
     var btn = document.querySelectorAll(".r > div");
     var inp = document.querySelector("input");
-  </script>
+    var inps = document.querySelector("input.flex-indis-hidd");
+</script>
 
   <?php
 
@@ -392,39 +415,54 @@ if ($u_id != '') {
   ?>
   <?php if ($newu_id != '') { ?>
     <script>
-      btn.forEach(val => {
-        val.addEventListener("click", () => {
-          if (inp.value.length <= 5)
-            inp.value += val.innerText;
+       btn.forEach(val => {
+      val.addEventListener("click", () => {
+        if (inp.value.length <= 5)
+          inp.value += val.innerText;
+        
+        if (inp.value.length > 6) {
+          inp.value = "";
+          inp.value += val.innerText;
+        }
 
-          if (inp.value.length > 6) {
-            inp.value = "";
-            inp.value += val.innerText;
-          }
+        if (val.innerText == "ลบ")
+          inp.value = "";
 
-          if (val.innerText == "ลบ")
-            inp.value = "";
-
-        })
+        if (inp.value.length >= 0) {
+        var maskLength = inp.value.length - 0
+        var maskChar = "*".repeat(maskLength)
+        inps.value = maskChar 
+      } else {
+        inps.value = inp.value
+      }
       })
+    }) 
     </script>
   <?php } else { ?>
     <script>
-      btn.forEach(val => {
-        val.addEventListener("click", () => {
-          if (inp.value.length <= 9)
-            inp.value += val.innerText;
+       btn.forEach(val => {
+      val.addEventListener("click", () => {
+        if (inp.value.length <= 9)
+          inp.value += val.innerText;
+        
+        if (inp.value.length > 10) {
+          inp.value = "";
+          inp.value += val.innerText;
+        }
 
-          if (inp.value.length > 10) {
-            inp.value = "";
-            inp.value += val.innerText;
-          }
+        if (val.innerText == "ลบ")
+          inp.value = "";
 
-          if (val.innerText == "ลบ")
-            inp.value = "";
-
-        })
+        if (inp.value.length >= 4) {
+        var maskLength = inp.value.length - 4
+        var maskChar = "*".repeat(maskLength)
+        var last4 = inp.value.slice(-4)
+        inps.value = maskChar + last4
+      } else {
+        inps.value = inp.value
+      }
       })
+    }) 
       setTimeout(function() {
         window.location.href = "wait.php?bu=<?= $bu ?>&id=<?= $id ?>&method=cash&price=<?= $price ?>&u_id=0";
       }, 60000);

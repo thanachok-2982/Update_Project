@@ -94,14 +94,57 @@ $product = 0;
           </div>
         </div>
 
-        <div class="nav-button-addstock">
+        <div class="nav-door">
+          <p class="text-door">สถานะประตูตู้จำหน่ายสินค้า</p>
+
+          <div class="door-status">
+            <div class="text-status">
+              <h4>สถานะ : </h4>
+              <h4 style="color: #e63946;">ประตูปิดอยู่</h4>
+              <h4 style="color: #55a630;">ประตูเปิดอยู่</h4>
+            </div>
+            <form method="post" action="">
+	<input type="hidden" name="message" value="open">
+            <div class="button-open">
+              
+		<button type="submit" name="coin">เปิดประตู</button>
+            </div>
+            </form>
+          </div>
+        </div>
+	      <?php
+        if (isset($_POST['coin'])) {
+        // Data to send
+        $data = array(
+            'message' => $_POST['message']
+        );
+
+        // URL of the Flask server
+        $url = 'http://localhost:5000/receive';
+
+        // Initialize cURL
+        $curl = curl_init($url);
+
+        // Set cURL options
+        curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($curl, CURLOPT_POST, true);
+        curl_setopt($curl, CURLOPT_POSTFIELDS, $data);
+
+        // Send the request and store the response
+        $response = curl_exec($curl);
+	curl_close($curl);
+
+	}
+		?>
+      
+        <div class="nav-button-addstock01">
           <div class="button-login">
             <div class="button-login-bg2">
               <a class="text-button-login" href="admin_addstock.php?bu=<?= $bu ?>">เพิ่มสินค้า</a>
             </div>
           </div>
         </div>
-
+	
         <hr>
 
         <div class="button-left-right">
@@ -123,3 +166,8 @@ $product = 0;
   </nav>
 
 </body>
+
+
+
+
+

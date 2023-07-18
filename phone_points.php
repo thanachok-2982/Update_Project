@@ -1,6 +1,7 @@
 <?php
 include_once('dbConfig.php');
 $bu = $_GET['bu'];
+$newu_id = isset($_GET['newu_id']);
 $query = mysqli_query($db, "SELECT * FROM vm_info WHERE vm_id = '$bu'");
 $vm_name = mysqli_fetch_array($query);
 ?>
@@ -123,13 +124,34 @@ $vm_name = mysqli_fetch_array($query);
         <form method="post">
           <div class="numPan">
 
-            <div class="numpad">
-              <p id="content_title_pay1" class="product-font1"></p>
+          <div class="numpad">
+              <?php if ($newu_id == '') { ?>
+                <p id="content_title_pay1" class="product-font1">ใส่เบอร์มือถือ เพื่อเช็คคะเเนนสะสม</p>
+              <?php } else if ($newu_id != '') { ?>
+                <p id="content_title_pay2" class="product-font1">ไม่พบเบอร์มือถือ กรุณาตั้งรหัสผ่านเพื่อสมัครสมาชิก</p>
+              <?php } ?>
+
             </div>
 
             <div class="flex-disp">
-              <input type="text" name="text" class="flex-indis" required placeholder="กรอกเบอร์มือถือ">
-            </div>
+
+              <?php if ($newu_id == '') { ?>
+                <input type="text" name="text" class="flex-indis" style="visibility: none;" required placeholder="กรอกเบอร์มือถือ">
+              <input type="text" name="text2" class="flex-indis-hidd" style="position: absolute;
+    left: 0;
+    top: 0;
+    visibility: visible;
+    display: block;" required placeholder="กรอกเบอร์มือถือ">
+           
+              <?php } else if ($newu_id != '') { ?>
+                <input type="text" name="text" class="flex-indis" style="visibility: none;" required placeholder="กรอกรหัสผ่าน 6 ตัว">
+              <input type="text" name="text2" class="flex-indis-hidd" style="position: absolute;
+    left: 0;
+    top: 0;
+    visibility: visible;
+    display: block;" required placeholder="กรอกรหัสผ่าน 6 ตัว">
+           
+              <?php } ?>
 
 
             <div class="nums">
@@ -181,6 +203,16 @@ $vm_name = mysqli_fetch_array($query);
           }
 
           .flex-indis {
+            width: 40vw;
+            height: 7vw;
+            font-size: 2vw;
+            text-align: center;
+            border: 2px solid #fb8500;
+            border-radius: 10px;
+            outline: none;
+          }
+
+          .flex-indis-hidd {
             width: 40vw;
             height: 7vw;
             font-size: 2vw;
@@ -272,47 +304,97 @@ $vm_name = mysqli_fetch_array($query);
     </div>
   </footer>
 
-
   <script>
     var btn = document.querySelectorAll(".r > div");
     var inp = document.querySelector("input");
-  </script>
+    var inps = document.querySelector("input.flex-indis-hidd");
+</script>
 
   <?php
 
-
   if (isset($_POST['btn-ok'])) {
-    $text = $_POST['text'];
-    $phone = substr($text, 0, 10);
-    $querys = mysqli_query($db, "SELECT * FROM user WHERE phone = '$phone'");
-    $ruser = mysqli_fetch_array($querys);
-    $points = $ruser['points'];
-    $balance = $ruser['balance'];
+    if ($newu_id == '') {
+      $text = $_POST['text'];
+      $phone = substr($text, 0, 10);
+      $querys = mysqli_query($db, "SELECT * FROM user WHERE phone = '$phone'");
+      $ruser = mysqli_fetch_array($querys);
 
-    if ($phone < 9) {
+      if ($phone < 9) {
   ?><script>
-        inp.value = "Enter 10 digit";
-      </script><?php
-              } else if ($phone == $ruser['phone']) {
-                ?>
-      <script>
-        window.location.href = "points.php?bu=<?= $bu ?>&u_id=<?= $ruser['u_id'] ?>";
-      </script>
-    <?php
-              } else if ($phone != $ruser['phone']) {
-    ?><script>
-        inp.value = "เบอร์โทรศัพท์ไม่ถูกต้อง";
-      </script><?php
+          inp.value = "Enter 10 digit";
+        </script><?php
+                } else if ($phone == $ruser['phone']) {
+
+                  ?>
+        <script>
+          window.location.href = "points.php?bu=<?= $bu ?>&u_id=<?= $ruser['u_id'] ?>";
+        </script>
+      <?php
+                } else if ($phone != $ruser['phone']) {
+                  $sql = "INSERT INTO `user`(`phone`, `balance`, `points`, `roles`) VALUES ('$phone','0','0','user')";
+                  mysqli_query($db, $sql);
+                  $query = mysqli_query($db, "SELECT * FROM user WHERE phone = $phone");
+                  $result = mysqli_fetch_array($query);
+      ?>
+        <script>
+          window.location.href = "phone_points.php?bu=<?= $bu ?>&newu_id=<?= $result['u_id'] ?>";
+        </script>
+      <?php
+                }
+              } else if ($newu_id != '') {
+                $text = $_POST['text'];
+                $pin = substr($text, 0, 6);
+                $int_var = (int)filter_var($pin, FILTER_SANITIZE_NUMBER_INT);
+                $pinn = strlen($int_var);
+                $a = $_GET['newu_id'];
+                if ($pinn < 5) {
+      ?><script>
+          inp.value = "Enter 6 digit";
+        </script>
+      <?php
+                } else if ($pinn == 6) {
+                  $query = mysqli_query($db, "UPDATE user SET pin = '$int_var' WHERE u_id = '$a' ");
+      ?>
+        <script>
+          window.location.href = "points.php?bu=<?= $bu ?>&u_id=<?= $a ?>";
+        </script>
+  <?php
+                }
               }
             }
-                ?>
+  ?>
+  <?php if ($newu_id != '') { ?>
+    <script>
+       btn.forEach(val => {
+      val.addEventListener("click", () => {
+        if (inp.value.length <= 5)
+          inp.value += val.innerText;
+        
+        if (inp.value.length > 6) {
+          inp.value = "";
+          inp.value += val.innerText;
+        }
 
-  <script>
-    btn.forEach(val => {
+        if (val.innerText == "ลบ")
+          inp.value = "";
+
+        if (inp.value.length >= 0) {
+        var maskLength = inp.value.length - 0
+        var maskChar = "*".repeat(maskLength)
+        inps.value = maskChar 
+      } else {
+        inps.value = inp.value
+      }
+      })
+    }) 
+    </script>
+  <?php } else { ?>
+    <script>
+       btn.forEach(val => {
       val.addEventListener("click", () => {
         if (inp.value.length <= 9)
           inp.value += val.innerText;
-
+        
         if (inp.value.length > 10) {
           inp.value = "";
           inp.value += val.innerText;
@@ -321,12 +403,21 @@ $vm_name = mysqli_fetch_array($query);
         if (val.innerText == "ลบ")
           inp.value = "";
 
+        if (inp.value.length >= 4) {
+        var maskLength = inp.value.length - 4
+        var maskChar = "*".repeat(maskLength)
+        var last4 = inp.value.slice(-4)
+        inps.value = maskChar + last4
+      } else {
+        inps.value = inp.value
+      }
       })
-    })
-    setTimeout(function() {
-      window.location.href = "home.php?bu=<?= $bu ?>";
-    }, 60000);
-  </script>
+    }) 
+      setTimeout(function() {
+        window.location.href = "home.php?bu=<?= $bu ?>";
+      }, 60000);
+    </script>
+  <?php } ?>
 </body>
 
 <!-- Script สำหรับภาษา -->

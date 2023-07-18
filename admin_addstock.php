@@ -134,24 +134,7 @@ if (isset($_POST['btn-ok'])) {
               </table>
             </div>
           </div>
-          <style>
-            .button-login-bg1 .button {
-              width: 100%;
-              height: 6vw;
-              border-radius: 5px;
-              background-color: #4361EE;
-              display: flex;
-              align-items: center;
-              text-align: center;
-              justify-content: center;
-              color: #FFF;
-              border-style: none;
-            }
-
-            .button-login-bg1 .button:hover {
-              background-color: #3046B1;
-            }
-          </style>
+          
           <div class="nav-button-addstock">
             <div class="button-login">
               <div class="button-login-bg1">
