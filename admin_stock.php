@@ -97,13 +97,7 @@ $product = 0;
         <div class="nav-door">
           <p class="text-door">สถานะประตูตู้จำหน่ายสินค้า</p>
 <div id="data-container">
-          <div class="door-status">
-            <div class="text-status">
-              <h4>สถานะ : </h4>
-              <h4 style="color: #e63946;">ประตูปิดอยู่</h4>
-              <h4 style="color: #55a630;">ประตูเปิดอยู่</h4>
-	    </div>
-	</div>
+          
             <form method="post" action="">
 	<input type="hidden" name="message" value="open">
             <div class="button-open">
