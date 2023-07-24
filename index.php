@@ -49,27 +49,28 @@ $response = curl_exec($curl);
 </head>
 
 <body>
+    
     <nav>
-        <div class="slider">
-            <figure>
-                <div class="nav-container">
-                    <img class="banner-header-img" src="/pic/bn1.png" />
-                </div>
+    <div class="slider">
+      <figure>
 
-                <div class="nav-container">
-                    <img class="banner-header-img" src="/pic/bn2.png" />
-                </div>
+        <?php 
+        $query = mysqli_query($db, "SELECT * FROM ad_info WHERE status = '1'");
 
-                <div class="nav-container">
-                    <img class="banner-header-img" src="/pic/bn3.png" />
-                </div>
+        while ($row = mysqli_fetch_array($query)) {
+            $imageURL = $row['ad_img'];
+        ?>
 
-                <div class="nav-container">
-                    <img class="banner-header-img" src="/pic/bn4.png" />
-                </div>
-            </figure>
+      <div class="nav-container">
+          <img class="banner-header-img" src="<?=$imageURL?>">
         </div>
-    </nav>
+
+        <?php 
+        }
+        ?>
+      </figure>
+    </div>
+  </nav>
 
     <div class="banner-add">
         <div class="banner-add-home">
