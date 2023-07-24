@@ -11,12 +11,7 @@ p1 = pcf8574_io.PCF(0x20)
 # กำหนด Address เพื่ออ้างอิงว่าจะสื่อสารกับ IC ตัวไหน โดย PCF8574 นั้นมีให้ set ได้ถึง 8 address
 # บอร์ดจะเริ่มที่ input mode และแต่ละ pin จะมีสถานะเป็น HIGH
 
-p1.pin_mode("p1", "OUTPUT")
-p1.pin_mode("p2", "OUTPUT")
 p1.pin_mode("p4", "OUTPUT")
-p1.pin_mode("p5", "OUTPUT")
-p1.pin_mode("p6", "OUTPUT")
-p1.pin_mode("p7", "OUTPUT")
 # กำหนดให้ ic แต่ละขาเป็น OUTPUT
 
 p1.write("p4", "HIGH")

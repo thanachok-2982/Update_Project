@@ -11,14 +11,11 @@ p1 = pcf8574_io.PCF(0x20)
 # บอร์ดจะเริ่มที่ input mode และแต่ละ pin จะมีสถานะเป็น HIGH
 
 
-p1.pin_mode("p1", "OUTPUT")
-p1.pin_mode("p2", "OUTPUT")
 p1.pin_mode("p4", "OUTPUT")
-p1.pin_mode("p5", "OUTPUT")
-p1.pin_mode("p6", "OUTPUT")
-p1.pin_mode("p7", "OUTPUT")
+#p1.pin_mode("p5", "OUTPUT")
 # กกำหนดให้ ic แต่ละขาเป็น OUTPUT
 p1.write("p4", "LOW")
+#p1.write("p5", "LOW")
 # กำหนดให้ขา p4 เป็น LOW
 
 p1.set_i2cBus(1)

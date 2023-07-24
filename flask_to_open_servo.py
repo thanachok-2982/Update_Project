@@ -5,16 +5,6 @@ import time
 import os
 import pcf8574_io
 
-p1 = pcf8574_io.PCF(0x20)
-p1.pin_mode("p0", "OUTPUT")
-p1.pin_mode("p1", "OUTPUT")
-p1.pin_mode("p2", "OUTPUT")
-p1.pin_mode("p3", "OUTPUT")
-p1.pin_mode("p4", "OUTPUT")
-p1.pin_mode("p5", "OUTPUT")
-p1.pin_mode("p6", "OUTPUT")
-p1.pin_mode("p7", "OUTPUT")
-x = 1
 
 app = Flask(__name__)
 
@@ -24,7 +14,7 @@ def receive_data():
     if data == 'servo1':
         
         try:
-            subprocess.run(['python', '/var/www/html/close_coin.py'])
+            #subprocess.run(['python', '/var/www/html/close_coin.py'])
             subprocess.run(['python', '/var/www/html/servo1.py'])
 
         except Exception as e:
@@ -34,7 +24,7 @@ def receive_data():
     elif data == 'servo2':
        
         try:
-            subprocess.run(['python', '/var/www/html/close_coin.py'])
+            #subprocess.run(['python', '/var/www/html/close_coin.py'])
             subprocess.run(['python', '/var/www/html/servo2.py'])
         
         except Exception as e:
@@ -48,48 +38,17 @@ def receive_data():
         except Exception as e:
             return f'Error executing script: {str(e)}'
         
-    elif data == 'open':
-        #try:
+    elif data == 'bat_on':
+        try:
         # Run the other Python script using subprocess
-         #   subprocess.run(['python', '/var/www/html/close_door.py'])
+            subprocess.run(['python', '/var/www/html/battery_on.py'])
         
-        #except Exception as e:
-         #   return f'Error executing script: {str(e)}'
-        def on():
-            p1.write("p2", "LOW")
-    #p1.write("p1", "HIGH")
-    #p1.write("p2", "HIGH")
-    #p1.write("p4", "HIGH")
-    #p1.write("p5", "HIGH")
-    #p1.write("p6", "HIGH")
-    #p1.write("p7", "HH")
-            print("on")
-            p1.set_i2cBus(1)
-            p1.get_i2cBus()
-    #time.sleep(3)
-
-        def off():
-            p1.write("p2", "HIGH")
-    #p1.write("p1", "HIGH")
-    #p1.write("p2", "HIGH")
-    #p1.write("p4", "HIGH")
-    #p1.write("p5", "HIGH")
-    #p1.write("p6", "HIGH")
-    #p1.write("p7", "HIGH")
-            print("off")
-#print(p1.read("p2"))
-
-# Additional you can do the following
-            p1.set_i2cBus(1)
-            p1.get_i2cBus()
-    #time.sleep(3)
-
-        for x in range(1):
+        except Exception as e:
+            return f'Error executing script: {str(e)}'
     
-            off()
-            time.sleep(1)
-            on()
-            time.sleep(1)
+    
+        #try:
+        
         
     return 'Data received: ' + data
 

@@ -21,12 +21,7 @@ default_high = True
 #กำหนดระยะห่าง
 distance_sensor = e18_d80nk.e18_d80nk(pin,default_high)
 
-p1.pin_mode("p1", "OUTPUT")
-p1.pin_mode("p2", "OUTPUT")
-p1.pin_mode("p4", "OUTPUT")
 p1.pin_mode("p5", "OUTPUT")
-p1.pin_mode("p6", "OUTPUT")
-p1.pin_mode("p7", "OUTPUT")
 # กำหนดให้ ic แต่ละขาเป็น OUTPUT
 
 

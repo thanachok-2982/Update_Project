@@ -21,12 +21,7 @@ default_high = True
 #กำหนดระยะห่าง
 distance_sensor = e18_d80nk.e18_d80nk(pin,default_high)
 
-p1.pin_mode("p1", "OUTPUT")
-p1.pin_mode("p2", "OUTPUT")
-p1.pin_mode("p4", "OUTPUT")
 p1.pin_mode("p5", "OUTPUT")
-p1.pin_mode("p6", "OUTPUT")
-p1.pin_mode("p7", "OUTPUT")
 # กำหนดให้ ic แต่ละขาเป็น OUTPUT
 
 
@@ -39,7 +34,7 @@ while(running):
             p1.write("p5", "HIGH")
             p1.set_i2cBus(1)
             p1.get_i2cBus()
-           # time.sleep(1)
+            #time.sleep(5)
             # เมื่อ distance_sensor.get_state() == True จะสั่งให้ มีสภานะเป็น HIGH
 
         else:
@@ -51,4 +46,7 @@ while(running):
 
     except KeyboardInterrupt:
         running = False
+        p1.write("p5", "HIGH")
+        p1.set_i2cBus(1)
+        p1.get_i2cBus()
         # ถ้าผู้ใช้กด Ctrl-C (KeyboardInterrupt) โปรแกรมจะสิ้นสุดการทำงาน

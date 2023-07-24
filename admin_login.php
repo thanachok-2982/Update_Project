@@ -29,7 +29,7 @@ $bu = 1;
     </header>
 
     <nav>
-        <form method="post">
+        <form method="post" autocomplete="off">
             <div class="nav-bg">
                 <div class="nav-login">
                     <div class="nav-login-container">
