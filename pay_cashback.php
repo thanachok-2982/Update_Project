@@ -41,22 +41,21 @@ $vm_name = mysqli_fetch_array($query);
   <nav>
     <div class="slider">
       <figure>
-        <div class="nav-container">
-          <img class="banner-header-img" src="/pic/bn1.png">
+
+        <?php 
+        $query = mysqli_query($db, "SELECT * FROM ad_info WHERE status = '1'");
+
+        while ($row = mysqli_fetch_array($query)) {
+            $imageURL = $row['ad_img'];
+        ?>
+
+      <div class="nav-container">
+          <img class="banner-header-img" src="<?=$imageURL?>">
         </div>
 
-        <div class="nav-container">
-          <img class="banner-header-img" src="/pic/bn2.png">
-        </div>
-
-        <div class="nav-container">
-          <img class="banner-header-img" src="/pic/bn3.png">
-        </div>
-
-        <div class="nav-container">
-          <img class="banner-header-img" src="/pic/bn4.png">
-        </div>
-
+        <?php 
+        }
+        ?>
       </figure>
     </div>
   </nav>
