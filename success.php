@@ -9,22 +9,20 @@ $query = mysqli_query($db, "SELECT * FROM product WHERE p_id = '$id'");
 $result = mysqli_fetch_array($query);
 $query = mysqli_query($db, "SELECT * FROM vm_info  WHERE vm_id = '$bu'");
 $vm_name = mysqli_fetch_array($query);
-$p1 = $vm_name['product1'] - 1;
-$p2 = $vm_name['product2'] - 1;
-$p3 = $vm_name['product3'] - 1;
 $query = mysqli_query($db, "SELECT * FROM user WHERE u_id = '$u_id'");
 $sss = mysqli_fetch_array($query);
 
-$sql = "INSERT INTO `order_his`(`price`, `u_id`, `p_id`, `method`) VALUES ('$price','$u_id','$id','$method')";
+$sql = "INSERT INTO `order_his`(`price`, `u_id`, `p_id`,`vm_id`, `method`) VALUES ('$price','$u_id','$id',$bu,'$method')";
 mysqli_query($db, $sql);
 
-if ($id == 1) {
-  $query = mysqli_query($db, "UPDATE vm_info SET product1 ='$p1' WHERE vm_id = '$bu'");
-} else if ($id == 2) {
-  $query = mysqli_query($db, "UPDATE vm_info SET product2 ='$p2' WHERE vm_id = '$bu'");
-} else if ($id == 3) {
-  $query = mysqli_query($db, "UPDATE vm_info SET product3 ='$p3' WHERE vm_id = '$bu'");
+$query = mysqli_query($db, "SELECT * FROM stock WHERE p_id = '$id' AND vm_id = '$bu'");
+$bbb = mysqli_fetch_array($query);
+if($bbb['in_stock'] > 0){
+  $instock = $bbb['in_stock'] - 1;
+} else {
+  $instock = $bbb['in_stock'];
 }
+$sql = mysqli_query($db, "UPDATE stock set in_stock = '$instock' WHERE p_id = '$id' AND vm_id = '$bu'");
 
 if ($method == 'points') {
   $num = $sss['points'] - $price;
