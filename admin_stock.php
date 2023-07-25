@@ -292,4 +292,3 @@ $product = 0;
   </nav>
 </body>
 </html>
-
