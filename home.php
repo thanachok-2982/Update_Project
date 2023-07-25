@@ -119,56 +119,54 @@ $sensor3 = 0;
   </div>
 
   <div class="container">
-    <div class="product">
-      <?php
-      $sql = mysqli_query($db, "SELECT * FROM vm_info WHERE vm_id ='$bu'");
-      $vm = mysqli_fetch_array($sql);
-      $query = mysqli_query($db, "SELECT * FROM product");
+  <div class="product">
+    <?php
+    $query = mysqli_query($db, "SELECT * FROM product");
 
-      while ($result = mysqli_fetch_array($query)) {
-      ?>
-        <?php
-        $product++;
+    while ($result = mysqli_fetch_array($query)) {
+      $p_id = $result['p_id'];
+      $bu = (isset($_GET['bu']) && $_GET['bu'] != "") ? $_GET['bu'] : 1;
 
-        if ($product == 1) {
-          $p = $vm['product1'];
-          $sensor = $sensor1;
-        } else if ($product == 2) {
-          $p = $vm['product2'];
-          $sensor = $sensor2;
-        } else if ($product == 3) {
-          $p = $vm['product3'];
-          $sensor = $sensor3;
-        }
-        if ($p != '' && $sensor != 1) {
-        ?>
-          <div class="product-item">
-            <?php if ($u_id == '') {
-            ?>
-              <a class="product-item-link" href="/pay.php?bu=<?= $bu ?>&id=<?= $result['p_id'] ?>">
-              <?php } else if ($u_id != '') { ?>
-                <a class="product-item-link" href="/pay.php?bu=<?= $bu ?>&id=<?= $result['p_id'] ?>&u_id=<?= $u_id ?>">
-                <?php } ?>
-                <img class="product-img" src="<?= $result['img'] ?>">
-                <p class="product-font1"><?= $result['name'] ?></p>
-                <p class="product-font2"><?= $result['p_price'] ?>฿</p>
-                </a>
-          </div>
+      // Fetch the stock quantity for the current product and vending machine from the stock table
+      $stock_query = mysqli_query($db, "SELECT in_stock FROM stock WHERE p_id = '$p_id' AND vm_id = '$bu'");
+      $stock_data = mysqli_fetch_assoc($stock_query);
+      $in_stock = ($stock_data) ? $stock_data['in_stock'] : 0;
 
-        <?php } else if ($p != '' && $sensor != 0) { ?>
-          <div class="product-item">
-            <a class="product-item-link">
-              <img class="product-img" src="<?= $result['img'] ?>">
-              <p class="product-font1"><?= $result['name'] ?></p>
-              <p class="product-font2">สินค้าหมด</p>
-            </a>
-          </div>
-      <?php
-
-        }
-      } ?>
-    </div>
+      if ($p_id == 1) {
+        $sensor = $sensor1;
+      } else if ($p_id == 2) {
+        $sensor = $sensor2;
+      } else if ($p_id == 3) {
+        $sensor = $sensor3;
+      }
+      
+      if ($sensor != 1) {
+    ?>
+        <div class="product-item">
+          <?php if ($u_id == '') { ?>
+            <a class="product-item-link" href="/pay.php?bu=<?= $bu ?>&id=<?= $p_id ?>">
+          <?php } else if ($u_id != '') { ?>
+            <a class="product-item-link" href="/pay.php?bu=<?= $bu ?>&id=<?= $p_id ?>&u_id=<?= $u_id ?>">
+          <?php } ?>
+          <img class="product-img" src="<?= $result['img'] ?>">
+          <p class="product-font1"><?= $result['name'] ?></p>
+          <p class="product-font2"><?= $result['p_price'] ?>฿</p>
+          </a>
+        </div>
+      <?php } else if ($sensor != 0) { ?>
+        <div class="product-item">
+          <a class="product-item-link">
+            <img class="product-img" src="<?= $result['img'] ?>">
+            <p class="product-font1"><?= $result['name'] ?></p>
+            <p class="product-font2">สินค้าหมด</p>
+          </a>
+        </div>
+    <?php
+      }
+    } ?>
   </div>
+</div>
+
 
   <div class="banner-add">
     <div class="banner-add-home">
