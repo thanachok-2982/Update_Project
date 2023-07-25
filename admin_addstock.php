@@ -4,20 +4,15 @@ $bu = $_GET['bu'];
 $product = 0;
 $sql = mysqli_query($db, "SELECT * FROM vm_info WHERE vm_id ='$bu'");
 $vm = mysqli_fetch_array($sql);
-$p = array($vm['product1'], $vm['product2'], $vm['product3']);
+// $p = array($vm['product1'], $vm['product2'], $vm['product3']);
 if (isset($_POST['btn-ok'])) {
-  foreach ($_POST['product']  as $item => $value) {
-
-    if ($item == 0) {
-      $sql = "UPDATE vm_info SET product1=$value WHERE vm_id=$bu";
-      $result = mysqli_query($db, $sql) or die("Error in query: $sql " . mysqli_error($db));
-    } else if ($item == 1) {
-      $sql = "UPDATE vm_info SET product2=$value WHERE vm_id=$bu";
-      $result = mysqli_query($db, $sql) or die("Error in query: $sql " . mysqli_error($db));
-    } else if ($item == 2) {
-      $sql = "UPDATE vm_info SET product3=$value WHERE vm_id=$bu";
-      $result = mysqli_query($db, $sql) or die("Error in query: $sql " . mysqli_error($db));
-    }
+  foreach ($_POST['instock'] as $p_id => $value) {
+    // Ensure the value is numeric and not negative
+    $value = max(0, intval($value));
+    
+    // Update the in_stock value in the stock table for the specific product and vending machine
+    $sql = "UPDATE stock SET in_stock=$value WHERE vm_id=$bu AND p_id=$p_id";
+    $result = mysqli_query($db, $sql) or die("Error in query: $sql " . mysqli_error($db));
   }
 ?>
   <script>
@@ -100,9 +95,10 @@ if (isset($_POST['btn-ok'])) {
                 while ($result = mysqli_fetch_array($query)) {
                 ?>
                   <?php
-                  $p[$product];
-
-
+                  // $p[$product];
+                  $id = $result['p_id'];
+                  $smami = mysqli_query($db, "SELECT * FROM stock where vm_id = '$bu' AND p_id = '$id'");
+                  $ans = mysqli_fetch_array($smami);
 
 
                   ?>
@@ -117,7 +113,7 @@ if (isset($_POST['btn-ok'])) {
                       <div class="add-stock">
 
                         <div class="dec button">-</div>
-                        <input type="text" name="product[<?= $product ?>]" value="<?= $p[$product] ?>" class="input-filed">
+                        <input type="text" name="instock[<?= $result['p_id'] ?>]" value="<?= $ans['in_stock'] ?>" class="input-filed">
                         <div class="inc button">+</div>
                       </div>
 
@@ -134,7 +130,24 @@ if (isset($_POST['btn-ok'])) {
               </table>
             </div>
           </div>
-          
+          <style>
+            .button-login-bg1 .button {
+              width: 100%;
+              height: 6vw;
+              border-radius: 5px;
+              background-color: #4361EE;
+              display: flex;
+              align-items: center;
+              text-align: center;
+              justify-content: center;
+              color: #FFF;
+              border-style: none;
+            }
+
+            .button-login-bg1 .button:hover {
+              background-color: #3046B1;
+            }
+          </style>
           <div class="nav-button-addstock">
             <div class="button-login">
               <div class="button-login-bg1">
