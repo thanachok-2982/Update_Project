@@ -136,7 +136,7 @@ $product = 0;
               <input type="hidden" name="message" value="open">
               <div class="button-open">
 
-                <button type="submit" name="coin" class="open-door">เปิดประตู</button>
+                
               </div>
             </form>
           </div>
